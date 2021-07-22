@@ -78,3 +78,11 @@
     background-color: white;
     color: #0a75d6;
 }
+
+.correctRegistration {
+    color: green;
+}
+
+.incorrectRegistration {
+    color: red;
+}

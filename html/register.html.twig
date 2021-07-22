@@ -7,6 +7,9 @@
 
 {% block content %}
     <div class="container main">
+        <div class="container" id="info">
+            {{ info }}
+        </div>
         <div class="container upper_text">
             REJESTRACJA
         </div>
@@ -16,7 +19,7 @@
                 <div class="row justify-content-center">
                     <div class="col-5">
                         <label class="label" for="login"> Login </label> <br>
-                        <input placeholder="Login" id="login" type="text" required>
+                        <input placeholder="Login" id="login" type="text" name="username" required>
                     </div>
                 </div>
                 <br>
@@ -24,7 +27,7 @@
                     <div class="col-5">
                         <label class="label" for="email"> E-mail </label> <br>
                         <div class="text-container">
-                            <input placeholder="E-mail" id="email" type="text" required>
+                            <input placeholder="E-mail" id="email" type="text" name="email" required>
                             <span id="infoEmail"> <i id="iconEmail" aria-hidden="true"></i> </span>
                         </div>
                     </div>
@@ -34,7 +37,7 @@
                     <div class="col-5">
                         <label class="label" for="password"> Hasło </label> <br>
                         <div class="text-container">
-                            <input placeholder="Hasło" id="password" type="password" required>
+                            <input placeholder="Hasło" id="password" type="password" name="password" required>
                             <span id="infoPassword">
                                 <i class="tooltip123" id="iconPassword" aria-hidden="true">
                                     <span class="tooltiptext123">
@@ -52,7 +55,7 @@
                 <br>
                 <div class="row justify-content-center">
                     <div class="col-5">
-                        <button type="submit" value="Submit" id="submit" class="locked" disabled> ZAREJESTRUJ SIĘ</button>
+                        <button type="submit" value="Submit" id="submit" class="locked" disabled name="registerSubmit"> ZAREJESTRUJ SIĘ </button>
                     </div>
                 </div>
             </div>

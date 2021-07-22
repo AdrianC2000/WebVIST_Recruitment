@@ -90,7 +90,21 @@ function validateInput(){
     }
 }
 
+function infoColor(){
+    let info = $("#info");
+    console.log(info.text().trim());
+    if(info.text().trim() === "Poprawnie zarejestrowano!") {
+        info.removeClass('incorrectRegistration');
+        info.addClass('correctRegistration');
+    }
+    else {
+        info.removeClass('correctRegistration');
+        info.addClass('incorrectRegistration');
+    }
+}
+
 $(document).ready(function () {
     $("#email").on('keyup', validateEmail)
     $("#password").on('keyup', validatePassword)
+    infoColor();
 });
