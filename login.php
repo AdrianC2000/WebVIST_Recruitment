@@ -1,6 +1,6 @@
 <?php
 
-echo $twig->render('register.html.twig', [
+echo $twig->render('login.html.twig', [
     'post' => $_POST,
     'session' => $_SESSION,
     'get' => $_GET]);

@@ -1,0 +1,64 @@
+{% block head %}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="/js/register.js"></script>
+    <link rel="stylesheet" href="/css/register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container main">
+        <div class="container upper_text">
+            REJESTRACJA
+        </div>
+        <br>
+        <form action="" method="post">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-5">
+                        <label class="label" for="login"> Login </label> <br>
+                        <input placeholder="Login" id="login" type="text" required>
+                    </div>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <div class="col-5">
+                        <label class="label" for="email"> E-mail </label> <br>
+                        <div class="text-container">
+                            <input placeholder="E-mail" id="email" type="text" required>
+                            <span id="infoEmail"> <i id="iconEmail" aria-hidden="true"></i> </span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <div class="col-5">
+                        <label class="label" for="password"> Hasło </label> <br>
+                        <div class="text-container">
+                            <input placeholder="Hasło" id="password" type="password" required>
+                            <span id="infoPassword">
+                                <i class="tooltip123" id="iconPassword" aria-hidden="true">
+                                    <span class="tooltiptext123">
+                                        <a id="Length" class="visible">Za krótkie hasło (min. 7 znaków)<br></a>
+                                        <a id="UpperCase" class="visible">Dodaj wielką literę<br></a>
+                                        <a id="LowerCase" class="visible">Dodaj małą literę<br></a>
+                                        <a id="Numbers" class="visible">Dodaj cyfrę<br></a>
+                                        <a id="Symbols" class="visible">Dodaj jeden znak specjalny (!@#$%^&*)</a>
+                                    </span>
+                                </i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <div class="col-5">
+                        <button type="submit" value="Submit" id="submit" class="locked" disabled> ZAREJESTRUJ SIĘ</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <img src="/images/vist.png" alt="Vist logo" class="logo">
+
+    </div>
+{% endblock %}
