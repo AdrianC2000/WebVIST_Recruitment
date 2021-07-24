@@ -1,0 +1,10 @@
+/*.main {
+    top: 100%;
+}*/
+
+.singleBoard {
+    border: 1px solid #2699fb;
+    color: #2699fb;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
