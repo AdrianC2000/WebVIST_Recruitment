@@ -92,14 +92,13 @@ function validateInput(){
 
 function infoColor(){
     let info = $("#info");
-    console.log(info.text().trim());
     if(info.text().trim() === "Poprawnie zarejestrowano!") {
-        info.removeClass('incorrectRegistration');
-        info.addClass('correctRegistration');
+        info.removeClass('incorrectInput');
+        info.addClass('correctInput');
     }
     else {
-        info.removeClass('correctRegistration');
-        info.addClass('incorrectRegistration');
+        info.removeClass('correctInput');
+        info.addClass('incorrectInput');
     }
 }
 

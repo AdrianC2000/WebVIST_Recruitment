@@ -31,5 +31,14 @@ if( isset($_GET['page']) && in_array($_GET['page'], $allowed_pages) ) {
     include('login.php');
 }
 
+if (isset($_POST['logoutSubmit'])) {
+    unset($_SESSION['id']);
+    unset($_SESSION['email']);
+    unset($_SESSION['username']);
+}
 
-echo $twig->render('index.html.twig', ['the' => 'variables', 'go' => 'here']);
+echo $twig->render('index.html.twig', [
+    'post' => $_POST,
+    'session' => $_SESSION,
+    'get' => $_GET]);
+
