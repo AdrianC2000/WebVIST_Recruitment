@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
+session_start();
 
 $loader = new \Twig\Loader\FilesystemLoader('html');
 $twig = new \Twig\Environment($loader);

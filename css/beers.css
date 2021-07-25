@@ -13,8 +13,32 @@ p {
 
 .header {
     font-weight: bold;
+    height:30px;
 }
 
 .leftAlign {
     text-align: left;
+}
+
+/*.description {
+    height:280px;
+}*/
+
+.ingredients {
+    height:110px;
+}
+
+.beerJPG {
+    max-width: 100%;
+    max-height: 200px;
+    display:block;
+    margin:auto;
+}
+
+.button {
+    background: none;
+    font-size: 20px;
+    border: none;
+    color: #2699fb;
+    outline:none;
 }

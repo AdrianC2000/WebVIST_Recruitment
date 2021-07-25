@@ -94,3 +94,7 @@ a {
 #login {
     color: #0a75d6;
 }
+
+.active {
+    background: black;
+}
