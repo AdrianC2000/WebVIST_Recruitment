@@ -95,6 +95,14 @@ a {
     color: #0a75d6;
 }
 
-.active {
-    background: black;
+.navbar {
+    transition: all 0.4s;
+}
+
+.activeNavbar {
+    background: #0a75d6;
+}
+
+.activeNavLink {
+    color: white;
 }
