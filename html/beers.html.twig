@@ -1,73 +1,108 @@
 {% block head %}
     <link rel="stylesheet" href="/css/beers.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
 {% block content %}
-    <div class="container main border border">
+    <div class="container main">
         <div class="container upper_text">
             PIWA
         </div>
+        {% set beersForThisSite = beers[0] %}
         <br>
-        <div class="row border border">
-            <div class="col-md-4 d-flex justify-content-center border border">
-                <div class="col-lg-10 singleBoard">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Cras dapibus mi urna, eu molestie lacus mollis et.
-                    Duis pretium nec mi at posuere. Morbi aliquam purus sed ipsum semper hendrerit.
-                    Fusce vitae mattis diam, sit amet finibus nulla. Mauris a eleifend justo.
-                    Aliquam eleifend facilisis mauris, at suscipit felis tincidunt id.
-                    Sed sed turpis vestibulum, pretium nisi ac, luctus mauris.
-                    Donec congue tellus at consectetur vehicula. Donec congue semper sapien volutpat ornare.
+        <div class="row">
+            {% for beer in beersForThisSite | slice(0, 3) %}
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="col-lg-12 singleBoard">
+                    <p> <i class="fa fa-star fa-2x" aria-hidden="true"></i> </p>
+                    <h4 class="header"> {{ beer.name }} </h4> <br>
+                    <div class="leftAlign">
+                        <h6> {{ beer.description }} </h6>
+                        <h5 class="header"> Ingredients </h5>
+                        <h6>
+                            <b> Malt: </b>
+                            {% for malt in beer.ingredients.malt %}
+                                {{ malt.name }},
+                            {% endfor %}
+                            <br>
+                            <b> Hops: </b>
+                            {% for hops in beer.ingredients.hops %}
+                                {{ hops.name }},
+                            {% endfor %}
+                            <br>
+                            <b> Yeast: </b>
+                            {{ beer.ingredients.yeast }}
+                        </h6> <br>
+                        <div> foteczka </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4 d-flex justify-content-center singleBoard border border">
-                <div class="col-lg-10 singleBoard">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Cras dapibus mi urna, eu molestie lacus mollis et.
-                    Duis pretium nec mi at posuere. Morbi aliquam purus sed ipsum semper hendrerit.
-                    Fusce vitae mattis diam, sit amet finibus nulla. Mauris a eleifend justo.
-                    Aliquam eleifend facilisis mauris, at suscipit felis tincidunt id.
-                    Sed sed turpis vestibulum, pretium nisi ac, luctus mauris.
-                    Donec congue tellus at consectetur vehicula. Donec congue semper sapien volutpat ornare.
-                </div>
-            </div>
-            <div class="col-md-4 d-flex justify-content-center singleBoard border border">
-                <div class="col-lg-10 singleBoard">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Cras dapibus mi urna, eu molestie lacus mollis et.
-                    Duis pretium nec mi at posuere. Morbi aliquam purus sed ipsum semper hendrerit.
-                    Fusce vitae mattis diam, sit amet finibus nulla. Mauris a eleifend justo.
-                    Aliquam eleifend facilisis mauris, at suscipit felis tincidunt id.
-                    Sed sed turpis vestibulum, pretium nisi ac, luctus mauris.
-                    Donec congue tellus at consectetur vehicula. Donec congue semper sapien volutpat ornare.
-                </div>
-            </div>
+            {% endfor %}
         </div>
         <br>
-        <div class="row border border">
-            <div class="col-md-4 d-flex justify-content-center singleBoard border border">
-                <div class="col-lg-10 singleBoard">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Cras dapibus mi urna, eu molestie lacus mollis et.
-                    Duis pretium nec mi at posuere. Morbi aliquam purus sed ipsum semper hendrerit.
-                    Fusce vitae mattis diam, sit amet finibus nulla. Mauris a eleifend justo.
-                    Aliquam eleifend facilisis mauris, at suscipit felis tincidunt id.
-                    Sed sed turpis vestibulum, pretium nisi ac, luctus mauris.
-                    Donec congue tellus at consectetur vehicula. Donec congue semper sapien volutpat ornare.
+        <div class="row">
+            {% for beer in beersForThisSite | slice(3, 5) %}
+                <div class="col-md-4 d-flex justify-content-center">
+                    <div class="col-lg-12 singleBoard">
+                        <p> <i class="fa fa-star fa-2x" aria-hidden="true"></i> </p>
+                        <h4 class="header"> {{ beer.name }} </h4> <br>
+                        <div class="leftAlign">
+                            <h6> {{ beer.description }} </h6>
+                            <h6> {#{{ beer.ingredients }}#} </h6> <br>
+                            <div> foteczka </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 d-flex justify-content-center singleBoard border border">
-                <div class="col-lg-10 singleBoard">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Cras dapibus mi urna, eu molestie lacus mollis et.
-                    Duis pretium nec mi at posuere. Morbi aliquam purus sed ipsum semper hendrerit.
-                    Fusce vitae mattis diam, sit amet finibus nulla. Mauris a eleifend justo.
-                    Aliquam eleifend facilisis mauris, at suscipit felis tincidunt id.
-                    Sed sed turpis vestibulum, pretium nisi ac, luctus mauris.
-                    Donec congue tellus at consectetur vehicula. Donec congue semper sapien volutpat ornare.
-                </div>
-            </div>
+            {% endfor %}
         </div>
+        <br>
+        {% if id == 1 %}
+            {% for i in id .. id + 2  %}
+                {% if i == id %}
+                    <b> {{ i }} </b>
+                {% else %}
+                        {{ i }}
+                {% endif %}
+            {% endfor %}
+            ...  <i class="fa fa-angle-right fa-lg fa-bold" aria-hidden="true"></i>
+        {% elseif id == 2 %}
+            {% for i in id - 1 .. id + 1  %}
+                {% if i == id %}
+                    <b> {{ i }} </b>
+                {% else %}
+                    {{ i }}
+                {% endif %}
+            {% endfor %}
+            ...  <i class="fa fa-angle-right fa-lg fa-bold" aria-hidden="true"></i>
+        {% elseif id == subpagesCounter - 1 %}
+            <i class="fa fa-angle-left fa-lg fa-bold" aria-hidden="true"></i>  ...
+            {% for i in id - 1 .. id + 1  %}
+                {% if i == id %}
+                    <b> {{ i }} </b>
+                {% else %}
+                    {{ i }}
+                {% endif %}
+            {% endfor %}
+        {% elseif id == subpagesCounter %}
+            <i class="fa fa-angle-left fa-lg fa-bold" aria-hidden="true"></i>  ...
+            {% for i in id - 2 .. id  %}
+                {% if i == id %}
+                    <b> {{ i }} </b>
+                {% else %}
+                    {{ i }}
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <i class="fa fa-angle-left fa-lg fa-bold" aria-hidden="true"></i>  ...
+            {% for i in id - 1 .. id + 1  %}
+                {% if i == id %}
+                    <b> {{ i }} </b>
+                {% else %}
+                    {{ i }}
+                {% endif %}
+            {% endfor %}
+            ...  <i class="fa fa-angle-right fa-lg fa-bold" aria-hidden="true"></i>
+        {% endif %}
         <br>
         <img src="/images/vist.png" alt="Vist logo" class="logo">
     </div>
