@@ -11,21 +11,12 @@ p {
     padding: 10px 0;
 }
 
-.header {
+.header, .ingredientsHeader {
     font-weight: bold;
-    height:30px;
 }
 
 .leftAlign {
     text-align: left;
-}
-
-/*.description {
-    height:280px;
-}*/
-
-.ingredients {
-    height:110px;
 }
 
 .beerJPG {
@@ -41,4 +32,16 @@ p {
     border: none;
     color: #2699fb;
     outline:none;
+}
+
+.normal {
+    color: #2699fb;
+    cursor:pointer;
+    transition: all 0.4s;
+}
+
+.favorite {
+    color: yellow;
+    cursor:pointer;
+    transition: all 0.4s;
 }

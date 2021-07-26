@@ -19,7 +19,7 @@ if (isset($config) && is_array($config)) {
     exit("Nie znaleziono konfiguracji bazy danych.");
 }
 
-$allowed_pages = ['register', 'login', 'beers'];
+$allowed_pages = ['register', 'login', 'beers', 'favourites'];
 
 if( isset($_GET['page']) && in_array($_GET['page'], $allowed_pages) ) {
     $page = $_GET['page'];

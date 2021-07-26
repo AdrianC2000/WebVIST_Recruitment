@@ -1,0 +1,38 @@
+{% block head %}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="/js/register.js"></script>
+    <link rel="stylesheet" href="/css/register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container main">
+        <div class="container upper_text">
+            Wyślij ulubione piwa na maila
+        </div>
+        <br>
+        <form action="" method="post">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-5">
+                        <label class="label" for="email"> E-mail </label> <br>
+                        <div class="text-container">
+                            <input placeholder="E-mail" id="email" type="text" name="email" required>
+                            <span id="infoEmail"> <i id="iconEmail" aria-hidden="true"></i> </span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <div class="col-5">
+                        <button type="submit" value="Submit" id="submit" class="locked" disabled name="registerSubmit">
+                            WYŚLIJ!
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <img src="/images/vist.png" alt="Vist logo" class="logo">
+    </div>
+{% endblock %}

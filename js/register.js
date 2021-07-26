@@ -78,15 +78,29 @@ function validatePassword() {
 
 function validateInput(){
     let submitButton = $("#submit");
-    if(globalEmailChecker && globalPasswordChecker){
-        submitButton.removeAttr("disabled")
-        submitButton.addClass("submit");
-        submitButton.removeClass("locked");
+    let actualWebsite = window.location.href;
+    if(actualWebsite.endsWith('favourites')) {
+        if(globalEmailChecker) {
+            submitButton.removeAttr("disabled")
+            submitButton.addClass("submit");
+            submitButton.removeClass("locked");
+        }
+        else {
+            submitButton.disabled = true;
+            submitButton.removeClass("submit");
+            submitButton.addClass("locked");
+        }
     }
     else {
-        submitButton.disabled = true;
-        submitButton.removeClass("submit");
-        submitButton.addClass("locked");
+        if (globalEmailChecker && globalPasswordChecker) {
+            submitButton.removeAttr("disabled")
+            submitButton.addClass("submit");
+            submitButton.removeClass("locked");
+        } else {
+            submitButton.disabled = true;
+            submitButton.removeClass("submit");
+            submitButton.addClass("locked");
+        }
     }
 }
 
