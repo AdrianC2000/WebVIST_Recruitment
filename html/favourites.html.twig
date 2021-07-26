@@ -6,36 +6,45 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container main">
-        <div class="container" id="info">
-            {{ info }}
+    {% if(session.id is not defined and session.email is not defined) %}
+        <div class="container main">
+            <div class="container upper_text">
+                Strona dostępna tylko dla zalogowanych użytkowników.
+            </div>
         </div>
-        <div class="container upper_text">
-            Wyślij ulubione piwa na maila
-        </div>
-        <br>
-        <form action="" method="post">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-5">
-                        <label class="label" for="email"> E-mail </label> <br>
-                        <div class="text-container">
-                            <input placeholder="E-mail" id="email" type="text" name="email" required>
-                            <span id="infoEmail"> <i id="iconEmail" aria-hidden="true"></i> </span>
+     {% else %}
+        <div class="container main">
+            <div class="container" id="info">
+                {{ info }}
+            </div>
+            <div class="container upper_text">
+                Wyślij ulubione piwa na maila
+            </div>
+            <br>
+            <form action="" method="post">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-5">
+                            <label class="label" for="email"> E-mail </label> <br>
+                            <div class="text-container">
+                                <input placeholder="E-mail" id="email" type="text" name="email" required>
+                                <span id="infoEmail"> <i id="iconEmail" aria-hidden="true"></i> </span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <div class="col-5">
+                            <button type="submit" value="Submit" id="submit" class="locked" disabled
+                                    name="registerSubmit">
+                                WYŚLIJ!
+                            </button>
                         </div>
                     </div>
                 </div>
-                <br>
-                <div class="row justify-content-center">
-                    <div class="col-5">
-                        <button type="submit" value="Submit" id="submit" class="locked" disabled name="registerSubmit">
-                            WYŚLIJ!
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <br>
-        <img src="/images/vist.png" alt="Vist logo" class="logo">
-    </div>
-{% endblock %}
+            </form>
+            <br>
+            <img src="/images/vist.png" alt="Vist logo" class="logo">
+        </div>
+        {% endif %}
+   {% endblock %}

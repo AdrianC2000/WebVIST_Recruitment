@@ -1,3 +1,5 @@
+let isLogged;
+
 function countMaxLinesInRow(rowName, blockName) {
     let elements = document.getElementById(rowName).getElementsByClassName(blockName);
     if($(window).width() > 767) {
@@ -40,15 +42,8 @@ function changeWebsite() {
 function changeFavouriteButton() {
     $(function () {
         $('.fa-star').click(function () {
-            let isLogged = 0;
-            $.ajax({
-                data: {'isLoggedIn': null},
-                type: 'post',
-                success: function (response) {
-                    isLogged = response;
-                    }
-            });
-            if(isLogged) {
+            let isLogged = checkIfLoggedIn();
+            if(isLogged.trim() === 'UserLoggedIn') {
                 let idBeer = $(this).attr('id');
                 if ($(this).hasClass("normal")) {
                     $(this).removeClass('normal');
@@ -73,8 +68,20 @@ function changeFavouriteButton() {
                 alert('Log in to add this beer to your favourites list!')
             }
         });
-
     });
+}
+
+function checkIfLoggedIn() {
+    var isLogged = '';
+    $.ajax({
+        data: {'isLoggedIn': null},
+        type: 'post',
+        async: false,
+        success: function (response) {
+            isLogged = response;
+        }
+    });
+    return(isLogged);
 }
 
 function setFavouriteButton() {
@@ -87,7 +94,7 @@ function setFavouriteButton() {
         success: function (alreadyFavouritesIDs) {
             alreadyFavouritesIDs = JSON.parse(alreadyFavouritesIDs);
             for (let i = 0; i < alreadyFavouritesIDs.length; i++) {
-                let actualID = alreadyFavouritesIDs[i];
+                let actualID = parseInt(alreadyFavouritesIDs[i]) + 1;
                 let actualStar = $('#' + actualID.toString());
                 $(actualStar).removeClass('normal');
                 $(actualStar).addClass('favorite');

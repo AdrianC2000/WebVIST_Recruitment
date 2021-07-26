@@ -8,7 +8,7 @@ if (isset($_POST['loginSubmit'])){
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($user) {
         if (password_verify($_POST['password'], $user['password'])) {
-            $_SESSION['id'] = $user['id'];
+            $_SESSION['id'] = $user['id'] - 1;
             $_SESSION['email'] = $user['email'];
             $_SESSION['username'] = $user['username'];
             $info = 'Poprawnie zalogowano!';

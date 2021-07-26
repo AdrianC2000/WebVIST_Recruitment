@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST['idBeerAdd'])) {
-    $idBeer = $_POST['idBeerAdd'];
+    $idBeer = $_POST['idBeerAdd'] - 1;
     $idUser = $_SESSION['id'];
     $stmt = $dbh->prepare("INSERT INTO favorite_beers (ID_user, ID_beer)
                            VALUES (:idUser, :idBeer)");
@@ -23,7 +23,7 @@ if (isset($_POST['idBeerAdd'])) {
 }
 
 if (isset($_POST['idBeerRemove'])) {
-    $idBeer = $_POST['idBeerRemove'];
+    $idBeer = $_POST['idBeerRemove'] - 1;
     $idUser = $_SESSION['id'];
     $stmt = $dbh->prepare("DELETE FROM favorite_beers WHERE ID_user = :idUser and ID_beer = :idBeer");
     $stmt->execute([':idUser' => $idUser, ':idBeer' => $idBeer]);
@@ -31,15 +31,12 @@ if (isset($_POST['idBeerRemove'])) {
 
 if (isset($_POST['getFavourites'])) {
     $idPage = $_POST['getFavourites'];
-    $idMax = $idPage * 5;
+    $idMax = $idPage * 5 - 1;
     $idMin = $idMax - 4;
     $idUser = $_SESSION['id'];
+/*    echo($idUser);*/
     $stmt = $dbh->prepare("SELECT ID_beer FROM favorite_beers WHERE ID_user = :idUser AND ID_beer BETWEEN :idMin AND :idMax");
     $stmt->execute([':idUser' => $idUser, ':idMax' => $idMax, ':idMin' => $idMin]);
-    /*$favourites = $stmt->fetch(PDO::FETCH_ASSOC);
-    echo(json_encode(array($idMin, $idMax)));
-    exit;*/
-
     $allFavouritesForThisPage = array();
     while ($singleFavouriteForThisPage = $stmt->fetch(PDO::FETCH_ASSOC)){
         array_push($allFavouritesForThisPage, $singleFavouriteForThisPage['ID_beer']);
@@ -50,10 +47,10 @@ if (isset($_POST['getFavourites'])) {
 
 if (isset($_POST['isLoggedIn'])) {
     if (isset($_SESSION['id'])){
-        echo(1);
+        echo('UserLoggedIn');
     }
     else {
-        echo(0);
+        echo('UserNotLoggedIn');
     }
     exit;
 }
