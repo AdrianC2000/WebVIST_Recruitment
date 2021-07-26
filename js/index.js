@@ -5,7 +5,6 @@ $(function () {
             $('.nav-link').addClass('activeNavLink');
         } else {
             $('.navbar').removeClass('activeNavbar');
-            $('.logoutButton').removeClass('activeNavLink');
             $('.nav-link').removeClass('activeNavLink');
         }
     });
@@ -18,6 +17,7 @@ $(document).ready(function () {
                 data: {'logoutSubmit': 'null'},
                 type: 'post',
                 success: function (response) {
+                    window.location.href = '';
                 }
             });
         });

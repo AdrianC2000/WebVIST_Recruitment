@@ -81,7 +81,7 @@ a {
     color: red;
 }
 
-.logoutButton {
+.logout {
     color: #0a75d6;
     font-weight: bold;
     background-color: Transparent;
@@ -95,9 +95,10 @@ a {
     transition: all 0.4s;
 }
 
-#loginName {
-    display: inline-block;
+[aria-current="page"] {
     pointer-events: none;
+    cursor: default;
+    text-decoration: none;
 }
 
 .activeNavbar {
