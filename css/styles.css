@@ -91,12 +91,13 @@ a {
     outline:none;
 }
 
-#login {
-    color: #0a75d6;
-}
-
 .navbar {
     transition: all 0.4s;
+}
+
+#loginName {
+    display: inline-block;
+    pointer-events: none;
 }
 
 .activeNavbar {

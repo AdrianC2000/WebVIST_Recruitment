@@ -8,6 +8,8 @@ require 'vendor/phpmailer/phpmailer/src/Exception.php';
 require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 
+$info = '';
+
 $url = 'https://api.punkapi.com/v2/beers';
 $json = file_get_contents($url);
 $jsonBeers = json_decode($json);
@@ -52,7 +54,7 @@ if (isset($_POST['registerSubmit'])) {
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('favourite@beers.com', 'Mailer');
+        $mail->setFrom('favourite@beers.com', 'Twoje ulubione piwa');
         $mail->addAddress($userMail);     //Add a recipient
 
         //Content
@@ -70,9 +72,9 @@ if (isset($_POST['registerSubmit'])) {
         $mail->AltBody = 'Oto twoje ulubione piwka';
 
         $mail->send();
-        echo 'Message has been sent';
+        $info = 'Wiadomość została wysłana!';
     } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        $info = "Wiadomość nie została wysłana. Mailer Error: {$mail->ErrorInfo}";
     }
 }
 
@@ -80,4 +82,5 @@ echo $twig->render('favourites.html.twig', [
     'post' => $_POST,
     'session' => $_SESSION,
     'get' => $_GET,
-    'favourites' => $finalMessages]);
+    'favourites' => $finalMessages,
+    'info' => $info]);

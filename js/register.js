@@ -110,6 +110,10 @@ function infoColor(){
         info.removeClass('incorrectInput');
         info.addClass('correctInput');
     }
+    else if(info.text().trim() === "Wiadomość została wysłana!") {
+        info.removeClass('incorrectInput');
+        info.addClass('correctInput');
+    }
     else {
         info.removeClass('correctInput');
         info.addClass('incorrectInput');
